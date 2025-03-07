@@ -1,12 +1,11 @@
 
-from docker:dind
+from alpine:latest
 
-run apk add wget docker-compose
+run apk add wget podman podman-compose openssl
 
 #run dockerd-entrypoint.sh &
 run wget https://github.com/hyperledger/firefly-cli/releases/download/v1.3.2/firefly-cli_1.3.2_Linux_x86_64.tar.gz --no-verbose && \
 	tar -zxf firefly-cli_*.tar.gz -C /usr/local/bin ff && rm firefly-cli_*.tar.gz
-
 
 run ff init smartrepair 1 -d postgres
 
@@ -17,6 +16,6 @@ run ff init smartrepair 1 -d postgres
 expose 5000
 expose 5109
 
-copy script.sh .
+copy script.alpine.sh script.sh
 
 entrypoint ["sh", "script.sh"]
