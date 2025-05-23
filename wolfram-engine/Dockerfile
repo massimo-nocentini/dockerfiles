@@ -1,5 +1,5 @@
 
-FROM wolframresearch/wolframengine:14.2
+FROM wolframresearch/wolframengine:14.2.1
 WORKDIR /home/wolframengine
 COPY wstpserver.conf .
 EXPOSE 8080
