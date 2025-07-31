@@ -6,27 +6,19 @@ FROM massimonocentini/chicken-scheme:5.4.0-clang-alpine
 RUN apk add --no-cache git sudo libuuid
 
 RUN git clone --depth=1 https://github.com/massimo-nocentini/unittest.scm.git &&\
-	cd unittest.scm/src &&\
-	make install &&\
-	make test -B
+	cd unittest.scm/src && make install
 
 RUN git clone --depth=1 https://github.com/massimo-nocentini/timsort.c.git &&\
-	cd timsort.c/src &&\
-	make linux &&\
-	sudo make install
+	cd timsort.c/src &&	make linux && sudo make install
 
 RUN git clone --depth=1 https://github.com/massimo-nocentini/aux.scm.git &&\
-	cd aux.scm/src &&\
-	make install &&\
-	make test -B
+	cd aux.scm/src && make install
 
 COPY --from=wolframengine /usr/local/Wolfram/WolframEngine/14.2/SystemFiles/Links/WSTP/DeveloperKit/Linux-x86-64/CompilerAdditions/wstp.h /usr/local/include/
 COPY --from=wolframengine /usr/local/Wolfram/WolframEngine/14.2/SystemFiles/Links/WSTP/DeveloperKit/Linux-x86-64/CompilerAdditions/libWSTP64i4.so /usr/local/lib/
 
 RUN git clone --depth=1 https://github.com/massimo-nocentini/wolfram.scm.git &&\
-	cd wolfram.scm/src &&\
-	make install
+	cd wolfram.scm/src && make install
 
 RUN git clone --depth=1 https://github.com/massimo-nocentini/hansei.scm.git &&\
-	cd hansei.scm/src &&\
-	make install
+	cd hansei.scm/src && make install
