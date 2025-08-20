@@ -3,6 +3,9 @@ FROM massimonocentini/wolframengine:wstpkernel AS wolframengine
 
 FROM massimonocentini/chicken-scheme:5.4.0
 
+RUN git clone --depth=1 https://github.com/massimo-nocentini/sxml.scm.git &&\
+	cd sxml.scm/src && make install
+
 RUN git clone --depth=1 https://github.com/massimo-nocentini/unittest.scm.git &&\
 	cd unittest.scm/src && make install
 
