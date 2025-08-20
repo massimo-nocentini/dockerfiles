@@ -1,7 +1,7 @@
 
 FROM massimonocentini/wolframengine:14.2.1-wstpkernel AS wolframengine
 
-FROM massimonocentini/chicken-scheme:5.4.0-clang-ubuntu
+FROM massimonocentini/chicken-scheme:5.4.0-clang-debian
 
 RUN git clone --depth=1 https://github.com/massimo-nocentini/unittest.scm.git &&\
 	cd unittest.scm/src && make install

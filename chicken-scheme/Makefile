@@ -2,10 +2,10 @@
 alpine:
 	docker build -t massimonocentini/chicken-scheme:5.4.0-clang-alpine -f Dockerfile.alpine .
 
-ubuntu:
-	docker build -t massimonocentini/chicken-scheme:5.4.0-clang-ubuntu -f Dockerfile.ubuntu .
+debian:
+	docker build -t massimonocentini/chicken-scheme:5.4.0-clang-debian -f Dockerfile.debian .
 
-myeggs:
+myeggs: debian
 	docker build --no-cache -t massimonocentini/chicken-scheme:5.4.0-clang-myeggs -f Dockerfile.myeggs .
 
 run:

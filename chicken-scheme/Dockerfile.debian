@@ -1,5 +1,5 @@
 
-FROM ubuntu:latest
+FROM debian:stable
 
 WORKDIR /home
 
