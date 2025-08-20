@@ -1,5 +1,5 @@
 
-FROM massimonocentini/wolframengine:14.2.1-wstpkernel AS wolframengine
+FROM massimonocentini/wolframengine:wstpkernel AS wolframengine
 
 FROM massimonocentini/chicken-scheme:5.4.0-clang-debian
 
@@ -7,7 +7,7 @@ RUN git clone --depth=1 https://github.com/massimo-nocentini/unittest.scm.git &&
 	cd unittest.scm/src && make install
 
 RUN git clone --depth=1 https://github.com/massimo-nocentini/timsort.c.git &&\
-	cd timsort.c/src &&	make linux && make install
+	cd timsort.c/src && make linux && make install
 
 RUN git clone --depth=1 https://github.com/massimo-nocentini/aux.scm.git &&\
 	cd aux.scm/src && make install
