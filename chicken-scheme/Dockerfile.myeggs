@@ -15,6 +15,9 @@ RUN git clone --depth=1 https://github.com/massimo-nocentini/timsort.c.git &&\
 RUN git clone --depth=1 https://github.com/massimo-nocentini/aux.scm.git &&\
 	cd aux.scm/src && make install
 
+RUN git clone --depth=1 https://github.com/massimo-nocentini/fds.scm.git &&\
+	cd fds.scm/src && make install
+
 COPY --from=wolframengine /home/wolframengine/wstp.h /usr/local/include/
 COPY --from=wolframengine /home/wolframengine/libWSTP64i4.so /usr/local/lib/
 
