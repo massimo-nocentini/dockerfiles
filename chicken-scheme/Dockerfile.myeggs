@@ -3,26 +3,19 @@ FROM massimonocentini/wolframengine:wstpkernel AS wolframengine
 
 FROM massimonocentini/chicken-scheme:5.4.0
 
-RUN git clone --depth=1 https://github.com/massimo-nocentini/sxml.scm.git &&\
-	cd sxml.scm/src && make install
+RUN git clone --depth=1 https://github.com/massimo-nocentini/sxml.scm.git && cd sxml.scm/src && make install
 
-RUN git clone --depth=1 https://github.com/massimo-nocentini/unittest.scm.git &&\
-	cd unittest.scm/src && make install
+RUN git clone --depth=1 https://github.com/massimo-nocentini/unittest.scm.git && cd unittest.scm/src && make install
 
-RUN git clone --depth=1 https://github.com/massimo-nocentini/timsort.c.git &&\
-	cd timsort.c/src && make linux && make install
+RUN git clone --depth=1 https://github.com/massimo-nocentini/timsort.c.git && cd timsort.c/src && make linux && make install
 
-RUN git clone --depth=1 https://github.com/massimo-nocentini/aux.scm.git &&\
-	cd aux.scm/src && make install
+RUN git clone --depth=1 https://github.com/massimo-nocentini/aux.scm.git &&	cd aux.scm/src && make install
 
-RUN git clone --depth=1 https://github.com/massimo-nocentini/fds.scm.git &&\
-	cd fds.scm/src && make install
+RUN git clone --depth=1 https://github.com/massimo-nocentini/fds.scm.git &&	cd fds.scm/src && make install
 
 COPY --from=wolframengine /home/wolframengine/wstp.h /usr/local/include/
 COPY --from=wolframengine /home/wolframengine/libWSTP64i4.so /usr/local/lib/
 
-RUN git clone --depth=1 https://github.com/massimo-nocentini/wolfram.scm.git &&\
-	cd wolfram.scm/src && make install
+RUN git clone --depth=1 https://github.com/massimo-nocentini/wolfram.scm.git && cd wolfram.scm/src && make install
 
-RUN git clone --depth=1 https://github.com/massimo-nocentini/hansei.scm.git &&\
-	cd hansei.scm/src && make install
+RUN git clone --depth=1 https://github.com/massimo-nocentini/hansei.scm.git && cd hansei.scm/src && make install
