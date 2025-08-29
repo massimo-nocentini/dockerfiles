@@ -3,6 +3,7 @@ FROM massimonocentini/wolframengine:wstpkernel AS wolframengine
 
 FROM massimonocentini/chicken-scheme:5.4.0
 
+RUN sudo chicken-install scheme-indent srfi-1 srfi-18 srfi-69 datatype spiffy matchable miscmacros r7rs csv-abnf json-abnf srfi-180 sxml-transforms
 
 RUN git clone --depth=1 https://github.com/massimo-nocentini/timsort.c.git && cd timsort.c/src && make linux && make install
 
