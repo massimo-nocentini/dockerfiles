@@ -1,4 +1,6 @@
 
+run:
+	docker run -it --rm massimonocentini/chicken-scheme:5.4.0-myeggs
 
 debian:
 	docker build -t massimonocentini/chicken-scheme:5.4.0 -f Dockerfile.debian .
@@ -6,5 +8,3 @@ debian:
 myeggs: debian
 	docker build --no-cache -t massimonocentini/chicken-scheme:5.4.0-myeggs -f Dockerfile.myeggs .
 
-run:
-	docker run -it --rm massimonocentini/chicken-scheme:5.4.0-myeggs
