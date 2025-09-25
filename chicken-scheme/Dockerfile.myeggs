@@ -7,10 +7,14 @@ RUN sudo chicken-install scheme-indent srfi-1 srfi-18 srfi-69 datatype spiffy ma
 
 RUN git clone --depth=1 https://github.com/massimo-nocentini/timsort.c.git && cd timsort.c/src && make linux && make install
 
-RUN git clone --depth=1 https://github.com/massimo-nocentini/aux.scm.git &&	cd aux.scm/src && make install
+RUN git clone --depth=1 https://github.com/massimo-nocentini/aux.scm.git \
+	&& cd aux.scm/src \
+	&& make simdjson-fetch && make foreigns && make foreigns-install \
+ 	&& make install
 
 COPY --from=wolframengine /home/wolframengine/wstp.h /usr/local/include/
 COPY --from=wolframengine /home/wolframengine/libWSTP64i4.so /usr/local/lib/
 
 RUN git clone --depth=1 https://github.com/massimo-nocentini/wolfram.scm.git && cd wolfram.scm/src && make install
 
+RUN rm -rf timsort.c aux.scm wolfram.scm # cleanup
