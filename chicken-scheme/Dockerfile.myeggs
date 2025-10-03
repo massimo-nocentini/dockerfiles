@@ -6,8 +6,8 @@ FROM massimonocentini/chicken-scheme:5.4.0
 COPY --from=wolframengine /home/wolframengine/wstp.h /usr/local/include/
 COPY --from=wolframengine /home/wolframengine/libWSTP64i4.so /usr/local/lib/
 
-RUN sudo chicken-install scheme-indent srfi-1 srfi-18 srfi-69 datatype spiffy matchable miscmacros r7rs csv-abnf json-abnf srfi-180 sxml-transforms
-RUN git clone --depth=1 https://github.com/massimo-nocentini/aux.scm.git && \
-	cd aux.scm/src && make foreigns-fetch && make foreigns-compile && make foreigns-install && make install
+RUN sudo chicken-install scheme-indent srfi-1 srfi-18 srfi-69 datatype spiffy matchable miscmacros r7rs csv-abnf sxml-transforms
+RUN git clone --depth=1 https://github.com/massimo-nocentini/spiffy-request-vars.git && cd spiffy-request-vars && chicken-install -sudo
+RUN git clone --depth=1 https://github.com/massimo-nocentini/aux.scm.git && cd aux.scm/src && make foreigns-fetch && make foreigns-compile && make foreigns-install && make install
 RUN git clone --depth=1 https://github.com/massimo-nocentini/wolfram.scm.git && cd wolfram.scm/src && make install
-RUN rm -rf aux.scm wolfram.scm
+RUN rm -rf spiffy-request-vars aux.scm wolfram.scm
